@@ -1,0 +1,27 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+dependencies {
+	compile project(':contract')
+}
+
+allprojects {
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
+
+	group = 'dev.berlitz'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+		compile 'org.springframework.boot:spring-boot-starter-web:2.1.4.RELEASE'
+		testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	}
+
+}
