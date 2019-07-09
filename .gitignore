@@ -1,7 +1,15 @@
 HELP.md
+### Gradle ###
+gradle.properties
 .gradle
-/build/
-!gradle/wrapper/gradle-wrapper.jar
+build/
+gradle/
+.gradle/
+gradlew.bat
+gradlew
+
+contract/out/
+impl/out/
 
 ### STS ###
 .apt_generated
