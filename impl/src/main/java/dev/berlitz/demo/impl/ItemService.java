@@ -1,27 +1,28 @@
 package dev.berlitz.demo.impl;
 
+import dev.berlitz.demo.impl.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
-import dev.berlitz.demo.impl.model.response.ItemResponse;
+import dev.berlitz.demo.impl.model.response.Item;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ItemService {
 
-    public ItemResponse buscarItem(Integer filial, String ordenarPor, String textoBusca, String tipoBusca) {
-        return ItemResponse.builder()
-                .codigo(844460)
-                .estoque(-21)
-                .estoqueCd(0)
-                .percentualDesconto(BigDecimal.ZERO)
-                .possuiItemAVencer(null)
-                .precoDe(new BigDecimal(82.64))
-                .precoFidelidade(new BigDecimal(82.64))
-                .precoFidelidade55Mais(new BigDecimal(82.64))
-                .precoPor(new BigDecimal(82.64))
-                .valorDesconto(BigDecimal.ZERO)
-                .build();
+    private final ItemRepository repository;
+
+    public ItemService(ItemRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<Item> getItems() {
+        List<Item> list = new ArrayList<>();
+        repository.findAll()
+                .iterator()
+                .forEachRemaining(list::add);
+        return list;
     }
 
 }

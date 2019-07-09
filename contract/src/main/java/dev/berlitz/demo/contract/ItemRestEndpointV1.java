@@ -1,31 +1,25 @@
 package dev.berlitz.demo.contract;
 
 import dev.berlitz.demo.impl.ItemService;
-import dev.berlitz.demo.impl.model.response.ItemResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.Nullable;
+import dev.berlitz.demo.impl.model.response.Item;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/item/v1")
 public class ItemRestEndpointV1 {
 
-    @Autowired
-    ItemService service;
+    private final ItemService service;
+
+    public ItemRestEndpointV1(ItemService service) {
+        this.service = service;
+    }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/item-busca")
-    public ItemResponse getItemResponse(
-            @Nullable
-            @RequestParam Integer filial,
-            @Nullable
-            @RequestParam String ordenarPor,
-            @Nullable
-            @RequestParam String textoBusca,
-            @Nullable
-            @RequestParam String tipoBusca
-    ) {
-        return service.buscarItem(filial, ordenarPor, textoBusca, tipoBusca);
+    @GetMapping("/itens")
+    public List<Item> getItems() {
+        return service.getItems();
     }
 
 }
