@@ -9,7 +9,9 @@ gradlew.bat
 gradlew
 
 contract/out/
+contract/build/
 impl/out/
+impl/build/
 
 ### STS ###
 .apt_generated
