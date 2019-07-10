@@ -15,7 +15,8 @@ import java.math.BigDecimal;
 @Data
 @Builder
 @Entity
-public class Item implements Serializable {
+@Table(name = "ITENS")
+public class ItemModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_SEQ")
     @SequenceGenerator(sequenceName = "ITENS_SEQUENCE", allocationSize = 1, name = "ITEM_SEQ")

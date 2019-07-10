@@ -1,17 +1,10 @@
 package dev.berlitz.demo.impl;
 
 import dev.berlitz.demo.impl.repository.ItemRepository;
-import oracle.jdbc.driver.DatabaseError;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import dev.berlitz.demo.impl.model.response.Item;
-import org.springframework.web.client.HttpClientErrorException;
+import dev.berlitz.demo.impl.model.response.ItemModel;
 
-import javax.persistence.Id;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,16 +17,16 @@ public class ItemService {
         this.repository = repository;
     }
 
-    public List<Item> getItems() {
-        List<Item> list = new ArrayList<>();
+    public List<ItemModel> getItems() {
+        List<ItemModel> list = new ArrayList<>();
         repository.findAll()
                 .iterator()
                 .forEachRemaining(list::add);
         return list;
     }
 
-    public void insertItem(Item item) {
-        repository.save(item);
+    public ItemModel insertItem(ItemModel item) {
+        return repository.save(item);
     }
 
     public void deleteItem(Integer id) {

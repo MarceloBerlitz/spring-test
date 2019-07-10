@@ -2,16 +2,16 @@ HELP.md
 ### Gradle ###
 gradle.properties
 .gradle
-build/
+/build/
 gradle/
 .gradle/
 gradlew.bat
 gradlew
 
-contract/out/
-contract/build/
-impl/out/
-impl/build/
+contract/out/*
+contract/build/*
+impl/out/*
+impl/build/*
 
 ### STS ###
 .apt_generated

@@ -1,8 +1,8 @@
 package dev.berlitz.demo.impl.repository;
 
-import dev.berlitz.demo.impl.model.response.Item;
+import dev.berlitz.demo.impl.model.response.ItemModel;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ItemRepository extends CrudRepository<Item, Integer> {
+public interface ItemRepository extends CrudRepository<ItemModel, Integer> {
 
 }
