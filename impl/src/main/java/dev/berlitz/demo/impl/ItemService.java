@@ -3,7 +3,7 @@ package dev.berlitz.demo.impl;
 import dev.berlitz.demo.impl.repository.ItemRepository;
 import org.springframework.stereotype.Service;
 
-import dev.berlitz.demo.impl.model.response.ItemModel;
+import dev.berlitz.demo.impl.model.ItemModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +23,11 @@ public class ItemService {
                 .iterator()
                 .forEachRemaining(list::add);
         return list;
+    }
+
+    public ItemModel getItem(Integer id) {
+        return repository.findById(id)
+                .orElse(null);
     }
 
     public ItemModel insertItem(ItemModel item) {

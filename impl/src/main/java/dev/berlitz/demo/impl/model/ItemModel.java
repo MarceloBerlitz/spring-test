@@ -1,19 +1,13 @@
-package dev.berlitz.demo.impl.model.response;
+package dev.berlitz.demo.impl.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
-@Builder
+@Getter
 @Entity
 @Table(name = "ITENS")
 public class ItemModel implements Serializable {
