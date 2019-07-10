@@ -1,12 +1,16 @@
 package dev.berlitz.demo.impl.model;
 
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+@Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Entity
 @Table(name = "ITENS")

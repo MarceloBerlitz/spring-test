@@ -1,7 +1,9 @@
 package dev.berlitz.demo.contract;
 
 import dev.berlitz.demo.contract.mapper.ItemListResponseMapper;
+import dev.berlitz.demo.contract.mapper.ItemModelMapper;
 import dev.berlitz.demo.contract.mapper.ItemResponseMapper;
+import dev.berlitz.demo.contract.request.ItemRequest;
 import dev.berlitz.demo.contract.response.ItemListResponse;
 import dev.berlitz.demo.contract.response.ItemResponse;
 import dev.berlitz.demo.impl.ItemService;
@@ -9,6 +11,7 @@ import dev.berlitz.demo.impl.model.ItemModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,8 +44,11 @@ public class ItemRestEndpointV1 {
 
     @PostMapping("/itens")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void createItem(@RequestBody @NotNull ItemModel item) {
-        service.insertItem(item);
+    public void createItem(
+            @NotNull
+            @Valid
+            @RequestBody ItemRequest item) {
+        service.insertItem(ItemModelMapper.mapFrom(item));
     }
 
     @DeleteMapping("/itens/{id}")
@@ -53,8 +59,11 @@ public class ItemRestEndpointV1 {
 
     @PutMapping("/itens")
     @ResponseStatus(HttpStatus.OK)
-    public ItemModel editItem(@RequestBody @NotNull ItemModel item) {
-        return service.insertItem(item);
+    public ItemModel editItem(
+            @NotNull
+            @Valid
+            @RequestBody ItemRequest item) {
+        return service.insertItem(ItemModelMapper.mapFrom(item));
     }
 
 }
